@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="application-name" content="xxx">
+  <meta name="theme-color" content="#132053">
+  <title>RouteFlow</title>
+  <meta name="description" content="Project page of xxx.">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon"/>
+  <link rel="canonical" href="xxx">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/9ac2d6f2dc.js" crossorigin="anonymous"></script>
+  <link href="/styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="page-content">
+      <h2 class="project-title" style="text-align:center">RouteFlow: Trajectory-Aware Animated Transitions</h2>
+      <section class="container project-intro">
+          <style>
+            .project-inline > h4 { display: none; }
+            .links-wrapper { display: inline-flex; gap: 20px; }
+            .links-wrapper > div { min-width: 40px; flex: none !important; }
+            .project-title{ padding: 0 4em; }
+            img { max-width: 90%; }
+            .middle-wrapper { text-align: center; }
+            .margin-wrapper { margin: 2vh 0; }
+            .flex-wrapper { display: flex; justify-content: space-between; gap: 10px; }
+            figcaption { text-align: left !important; font-size: 0.9em; font-style: italic; }
+            .twitter-tweet-rendered { margin-left: auto; margin-right: auto; }
+          </style>
+          <!-- <div class="project-author">
+              <div class="author-wrapper">
+                  <div class="author-name"><a href="xxx" target="_blank"><span class="author_me">xxx</span></a></div>
+                  <div class="author-afflication">xxx</div>
+              </div>
+              <div class="author-wrapper">
+                  <div class="author-name"><a href="xxx" target="_blank">xxx</a></div>
+                  <div class="author-afflication">xxx</div>
+              </div>
+          </div> -->
+          
+          <div class="middle-wrapper margin-wrapper"><img src="./motivation.png" description="motivation" /></div>
+          <p><strong>Abstract</strong>: Animating objects' movements is widely used to facilitate tracking changes and observing both the global trend and local hotspots
+            where objects converge or diverge. Existing methods, however, often obscure critical local hotspots by only considering the start and
+            end positions of objects' trajectories. To address this gap, we propose RouteFlow, a trajectory-aware animated transition method that
+            effectively balances the global trend and local hotspots while minimizing occlusion. RouteFlow is inspired by a real-world bus route
+            analogy: objects are regarded as passengers traveling together, with local hotspots representing bus stops where these passengers get
+            on and off. Based on this analogy, animation paths are generated like bus routes, with the object layout generated similarly to seat
+            allocation according to their destinations. Compared with state-of-the-art methods through a quantitative experiment and a user
+            study, RouteFlow better facilitates identifying the global trend and locating local hotspots while performing comparably in tracking
+            objects' movements.</p>
+          <!-- <p><strong>Keywords</strong>: trajectory data, animation, edge bundling</p> -->
+          <div class="project-inline">
+            <!-- <h4>Links</h4> -->
+            <div class="spacer"></div>
+            <div class="links-wrapper">
+              <!-- <div> <a target="_blank" href="xxx"><i class="fas fa-book" aria-hidden="true"></i> DOI</a></div> -->
+              <div><a target="_blank" href="https://github.com/Trajectory-Anim/Trajectory-Aware-Animated-Transitions"> <i class="fab fa-github" aria-hidden="true"></i> Github repository (the source code, experiment data, and results) </a></div>
+              <!-- <div><a target="_blank" href="xxx"><i class="far fa-lightbulb" aria-hidden="true"></i> Preview </a></div>
+              <div><a target="_blank" href="xxx"><i class="fas fa-film" aria-hidden="true"></i> Video </a></div>
+              <div> <a href="xxx" target="_blank"><i class="fas fa-photo-video"></i> Slides</a> </div> -->
+            </div>
+          </div>
+          <p><br /></p>
+          <div class="middle-wrapper">
+            <video width="820" height="460" controls>
+              <source src="video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <h4 id="motivation">Motivation</h4>
+          <p>Animating object movements along trajectories is crucial for understanding complex data. For example, in bird migration studies, animations help visualize movement trends and identify local hotspots where birds converge or diverge. These hotspots are key to understanding migration patterns, yet existing animation methods often fail to clearly highlight them, focusing too much on global trends or obscuring important details.</p>
+          <p>Recent techniques have attempted to address this, such as grouping transitions or reducing occlusion. However, they still struggle to balance global trends with local hotspots effectively.</p>
+          <p>To overcome this, we introduce <b>RouteFlow</b>, a system inspired by the bus route analogy. Objects are animated along shared paths, with local hotspots acting as key points where objects converge or diverge. This approach ensures both global trends and local hotspots are visible without occlusion, offering a clearer and more interactive way to explore trajectory data.</p>
+          
+          <h4 id="xxx">Formulation Highlight: Bus Route Analogy</h4>
+          <p>In our animation system, <b>RouteFlow</b>, we use a real-world bus route analogy to design object movements. Objects with similar trajectories are grouped together, moving along shared animation paths like passengers on the same bus. Local hotspots act as "bus stops," where objects converge or diverge. This approach captures both global trends and local hotspots effectively, simplifying complex trajectories while preserving critical convergence points. The process is formulated as a sequential optimization problem, divided into two sub-problems: trajectory-driven path generation (similar to planning bus routes) and object layout generation (akin to seat allocation). This sequential approach ensures efficient path generation and minimizes occlusion.</p>
+          <div class="middle-wrapper margin-wrapper"><img src="./bus_analogy.png" description="bus analogy" /></div>
+
+          <h4 id="xxxx">Example Animations</h4>
+          <div class="middle-wrapper margin-wrapper flex-wrapper">
+            <figure width="410">
+                <video width="405" controls>
+                    <source src="./Anim1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption>Animation on the BirdMap dataset.</figcaption>
+            </figure>
+            
+            <figure width="410">
+                <video width="405" controls>
+                    <source src="./Anim2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption>Animation on a synthetic dataset.</figcaption>
+            </figure>
+            
+            </div>
+
+          <h4 id="related-works">Related Works</h4>
+          <ul>
+            <li><a href="https://ieeexplore.ieee.org/abstract/document/8031015">A Vector Field Design Approach to Animated Transitions.</a> TVCG 2018.</li>
+            <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S1045926X16301586">Focus+Context Grouping for Animated Transitions</a>. J Vis Lang Comput 2018.</li>
+          </ul>
+  </div>
+</body>
+</html>
